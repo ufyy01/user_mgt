@@ -81,7 +81,11 @@ const loginUser = async (req, res) => {
         if(user.role !== "admin") {
             res.render('user', { userData })
         }
-        res.redirect('/dash')
+
+        if(user.role === "admin") {
+            res.redirect('/dash')
+        }
+        
     }
     catch(error) {
         res.status(400).send(error.message); 
