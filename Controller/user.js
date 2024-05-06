@@ -78,12 +78,10 @@ const loginUser = async (req, res) => {
 
         req.session.user = user.username
 
-        if(user.role === "admin") {
-            res.redirect('/admin')
+        if(user.role !== "admin") {
+            res.redirect('user', { userData })
         }
-        else {
-            res.render('user', { userData })
-        }
+        res.render('/dash')
     }
     catch(error) {
         res.status(400).send(error.message); 
@@ -167,7 +165,7 @@ const adminView = async (req, res) => {
             throw new Error("Can't fetch users, please try again")
         }
 
-        res.render('admin', { users })
+        res.render('dash', { users })
     }
     catch(error) {
         res.status(400).send(error.message); 

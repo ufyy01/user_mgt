@@ -10,7 +10,7 @@ router.post('/', loginUser)
 router.get('/register', regForm)
 router.post('/register', registerUser)
 
-router.get('/admin', requireAuth, adminView)
+router.get('/dash', requireAuth, adminView)
 
 router.get('/update/:id', requireAuth, editUser)
 router.post('/update/:id', requireAuth, updateUser)
