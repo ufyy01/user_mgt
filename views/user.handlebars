@@ -1,0 +1,18 @@
+<div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="first-card d-lg-flex mx-auto mt-5 p-lg-3">
+        <img class="card-img-top img-fluid" src="/assets/profile.jpg" alt="user" />
+        <div class="card-body mx-lg-3 w-100 d-flex flex-column justify-content-between">
+            <div class="mt-lg-4 d-lg-flex justify-content-between me-5">
+                <p class="card-small-text">HELLO!</p>
+                <p class="card-small-text">{{ userData.role }}</p>
+            </div>
+            <p>Username: <span class="card-title">{{ userData.username }}</span></p>
+            <p>Email: <span class="card-title">{{ userData.email }}</p>
+            <p>Phone: <span class="card-title">{{ userData.phone }}</p>
+            <p class="mb-3">Total Transactions: <span class="card-title">30</span> </p>
+            <div class="text-center mb-3">
+                <a href="/update/{{userData.id}}" class="btn btn-user btn-lg">Edit</a>
+            </div>
+        </div>
+    </div>
+</div>
