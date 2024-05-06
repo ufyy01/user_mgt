@@ -10,11 +10,11 @@ router.post('/', loginUser)
 router.get('/register', regForm)
 router.post('/register', registerUser)
 
-router.get('/admin', [requireAuth, admin], adminView)
+router.get('/admin', requireAuth, adminView)
 
 router.get('/update/:id', requireAuth, editUser)
 router.post('/update/:id', requireAuth, updateUser)
 
-router.get('/delete/:id', requireAuth, deleteUser)
+router.get('/delete/:id', [requireAuth, admin], deleteUser)
 
 module.exports = router
