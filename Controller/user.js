@@ -77,7 +77,6 @@ const loginUser = async (req, res) => {
         };
 
         req.session = user.username
-        req.user = user
 
         if(user.role !== "admin") {
             res.render('user', { userData })
