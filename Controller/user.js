@@ -86,10 +86,10 @@ const loginUser = async (req, res) => {
         req.session.user = user.username
 
         if(user.role === "admin") {
-            res.render('Admin', { users })
+            res.render('user', { users })
         }
         else {
-            res.render('user', { userData })
+            res.render('admin', { userData })
         }
     }
     catch(error) {
