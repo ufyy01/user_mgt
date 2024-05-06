@@ -85,12 +85,12 @@ const loginUser = async (req, res) => {
 
         req.session.user = user.username
 
-        // if(user.role === "admin") {
-        //     res.render('user', { users })
-        // }
-        // else {
-        // }
-        res.render('admin', { userData })
+        if(user.role === "admin") {
+            res.render('user', { users })
+        }
+        else {
+            res.render('admin', { userData })
+        }
     }
     catch(error) {
         res.status(400).send(error.message); 
