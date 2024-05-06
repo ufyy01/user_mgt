@@ -62,13 +62,6 @@ const loginUser = async (req, res) => {
             throw new Error("user not found")
         }
 
-        const users =  await User.findAll({
-            raw: true
-        })
-        if (!users) {
-            throw new Error("Can't fetch users, please try again")
-        }
-
         const auth = await bcrypt.compare(password, user.password)
 
         if (!auth) {
@@ -86,10 +79,10 @@ const loginUser = async (req, res) => {
         req.session.user = user.username
 
         if(user.role === "admin") {
-            res.render('user', { users })
+            res.redirect('/admin')
         }
         else {
-            res.render('admin', { userData })
+            res.render('user', { userData })
         }
     }
     catch(error) {
@@ -165,6 +158,21 @@ const deleteUser = async (req, res) => {
     }
 }
 
+const adminView = async (req, res) => {
+    try{
+        const users =  await User.findAll({
+            raw: true
+        })
+        if (!users) {
+            throw new Error("Can't fetch users, please try again")
+        }
+
+        res.render('admin', { users })
+    }
+    catch(error) {
+        res.status(400).send(error.message); 
+    }
+}
 
 module.exports = {
     loginForm,
@@ -173,5 +181,6 @@ module.exports = {
     loginUser,
     editUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    adminView
 }

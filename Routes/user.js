@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { loginForm, registerUser, regForm, loginUser, editUser, updateUser, deleteUser } = require('../Controller/user')
+const { loginForm, registerUser, regForm, loginUser, editUser, updateUser, deleteUser, adminView } = require('../Controller/user')
 const admin = require('../Middleware/admin')
 const requireAuth = require('../Middleware/auth')
 
@@ -9,6 +9,8 @@ router.post('/', loginUser)
 
 router.get('/register', regForm)
 router.post('/register', registerUser)
+
+router.get('/admin', adminView)
 
 router.get('/update/:id', requireAuth, editUser)
 router.post('/update/:id', requireAuth, updateUser)
