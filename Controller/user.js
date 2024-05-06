@@ -79,9 +79,9 @@ const loginUser = async (req, res) => {
         req.session.user = user.username
 
         if(user.role !== "admin") {
-            res.redirect('user', { userData })
+            res.render('user', { userData })
         }
-        res.render('/dash')
+        res.redirect('/dash')
     }
     catch(error) {
         res.status(400).send(error.message); 
