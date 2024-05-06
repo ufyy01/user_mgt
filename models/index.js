@@ -7,5 +7,4 @@ const db = new Sequelize(process.env.DATABASE, process.env.USER, process.env.PAS
   dialect: process.env.DIALECT,
 })
 
-console.log(db)
 module.exports = db;
