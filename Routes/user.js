@@ -15,6 +15,6 @@ router.get('/dash', requireAuth, adminView)
 router.get('/update/:id', requireAuth, editUser)
 router.post('/update/:id', requireAuth, updateUser)
 
-router.get('/delete/:id', [requireAuth, admin], deleteUser)
+router.get('/delete/:id', requireAuth, deleteUser)
 
 module.exports = router
